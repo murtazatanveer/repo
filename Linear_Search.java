@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.ArrayList;
 
 class linerSearch{
 
@@ -62,32 +63,121 @@ boolean isCharExist(String str,char ch){
 
 int [] elementIndex(int [][] arr,int target){
 
-    int []result = new int[2];
 
     if(arr==null || arr.length==0){
-        result[0]=-1;
-        result[1]=-1;
-        return result;
+        return new int[]{-1,-1};
     }
 
     for (int i = 0; i < arr.length; i++) {
 
         for (int j = 0; j < arr[i].length; j++) {
 
-             if(target==arr[i][j]){
-                result[0]=i;
-                result[1]=j;
-                return result;
-                }          
+             if(target==arr[i][j]){return new int[]{i,j};}          
         }       
     }
  
-    result[0]=-1;
-    result[1]=-1;
-    return result;
+    return new int[]{-1,-1};
     
 }
 
+int numsWithEvenDigits(int [] arr){
+
+    int count=0;
+
+    for (int i = 0; i < arr.length; i++) {
+        if(isNumHasEvenDigits(arr[i])){
+            count++;
+        }
+    }
+    return count;
+}
+
+
+boolean isNumHasEvenDigits(int num){
+
+    if(num==0){return false;}
+
+    num = num < 0 ? (num * -1) : num;
+
+    int count=0;
+
+    while (num>0){
+        num /= 10;
+        count++;       
+    }
+
+    return count % 2 == 0;
+
+}
+
+int maxWealth(int [][] arr){
+
+    int max = sumofElements(arr[0]);
+
+    for (int i = 1; i < arr.length; i++) {
+
+        if(sumofElements(arr[i])>max){
+            max = sumofElements(arr[i]);
+        }
+        
+    }
+
+    return max;
+
+}
+
+int sumofElements(int []arr){
+
+    if(arr==null || arr.length==0){return 0;}
+
+    int sum=0;
+
+    for (int i = 0; i < arr.length; i++) {sum += arr[i];}
+
+    return sum;
+}
+
+/* Given an array arr of positive integers sorted in a strictly increasing order, and an integer k.
+
+Return the kth positive integer that is missing from this array.
+
+ 
+
+Example 1:
+
+Input: arr = [2,3,4,7,11], k = 5
+Output: 9
+Explanation: The missing positive integers are [1,5,6,8,9,10,12,13,...]. The 5th missing positive integer is 9. */
+
+// Solution
+
+int findKthPositive(int[] arr, int k) {
+   
+    ArrayList<Integer> arrCopy = new ArrayList<>(1);
+    
+    boolean isExist=false;
+    
+    for (int i = 1;k>arrCopy.size(); i++) {
+      
+        for (int j = 0; j < arr.length; j++) {
+
+        if(arr[j]>i){
+            break;
+        }
+            
+        if(arr[j]==i){
+            isExist=true;
+            break;}    
+        
+    }
+    if(!isExist){arrCopy.add(i);}
+    isExist=false;
+    
+}
+
+return arrCopy.get(k-1);
+    
+}
 
 }
 
@@ -98,7 +188,7 @@ public class Linear_Search {
 
          linerSearch test = new linerSearch();
 
-        // int []arr = {101,12,67,23,90,45,9,63};
+         //int []arr = {101,134,67,4,90,163,1111,63,10101,555,-99,0};
 
         // System.out.println(test.givenElementIndex(arr, 23));
 
@@ -116,11 +206,23 @@ public class Linear_Search {
 
         // System.out.println(test.isCharExist(s, 'o'));
 
-        // int [][]arr2d = {{10,80,30},{50,70,19},{10,65,45}};
+        //int [][]arr2d = {{10,80,30},{50,70,19},{10,65,45},{100,50,-10}};
 
         // System.out.println(Arrays.toString(test.elementIndex(arr2d, 65)));
         // System.out.println(Arrays.toString(test.elementIndex(arr2d, 20)));
         
+        // System.out.println(test.numsWithEvenDigits(arr));
+
+        //System.out.println(test.maxWealth(arr2d));
+
+        int []arrTest1 = {2,3,4,7,11};
+        
+        System.out.println(test.findKthPositive(arrTest1, 5));
+
+        int []arrTest2 = {1,2,3,4};
+
+        System.out.println(test.findKthPositive(arrTest2, 2));
+
        
     }
     
