@@ -80,12 +80,34 @@ int [] elementIndex(int [][] arr,int target){
     
 }
 
-int numsWithEvenDigits(int [] arr){
+/*  Given an array nums of integers, return how many of them contain an even number of digits.
+
+ 
+
+Example 1:
+
+Input: nums = [12,345,2,6,7896]
+Output: 2
+Explanation: 
+12 contains 2 digits (even number of digits). 
+345 contains 3 digits (odd number of digits). 
+2 contains 1 digit (odd number of digits). 
+6 contains 1 digit (odd number of digits). 
+7896 contains 4 digits (even number of digits). 
+Therefore only 12 and 7896 contain an even number of digits.
+Example 2:
+
+Input: nums = [555,901,482,1771]
+Output: 1 
+Explanation: 
+Only 1771 contains an even number of digits. */
+
+int findNumbers(int[] nums) {
 
     int count=0;
 
-    for (int i = 0; i < arr.length; i++) {
-        if(isNumHasEvenDigits(arr[i])){
+    for (int i = 0; i < nums.length; i++) {
+        if(isNumHasEvenDigits(nums[i])){
             count++;
         }
     }
@@ -110,14 +132,44 @@ boolean isNumHasEvenDigits(int num){
 
 }
 
-int maxWealth(int [][] arr){
+/*  You are given an m x n integer grid accounts where accounts[i][j] is the amount of money the i​​​​​​​​​​​th​​​​ customer has in the j​​​​​​​​​​​th​​​​ bank. Return the wealth that the richest customer has.
 
-    int max = sumofElements(arr[0]);
+A customer's wealth is the amount of money they have in all their bank accounts. The richest customer is the customer that has the maximum wealth.
 
-    for (int i = 1; i < arr.length; i++) {
+ 
 
-        if(sumofElements(arr[i])>max){
-            max = sumofElements(arr[i]);
+Example 1:
+
+Input: accounts = [[1,2,3],[3,2,1]]
+Output: 6
+Explanation:
+1st customer has wealth = 1 + 2 + 3 = 6
+2nd customer has wealth = 3 + 2 + 1 = 6
+Both customers are considered the richest with a wealth of 6 each, so return 6.
+Example 2:
+
+Input: accounts = [[1,5],[7,3],[3,5]]
+Output: 10
+Explanation: 
+1st customer has wealth = 6
+2nd customer has wealth = 10 
+3rd customer has wealth = 8
+The 2nd customer is the richest with a wealth of 10.
+Example 3:
+
+Input: accounts = [[2,8,7],[7,1,3],[1,9,5]]
+Output: 17 */
+
+ int maximumWealth(int[][] accounts){
+
+    if(accounts.length==1){return sumofElements(accounts[0]);}
+
+    int max = sumofElements(accounts[0]);
+
+    for (int i = 1; i < accounts.length; i++) {
+
+        if(sumofElements(accounts[i])>max){
+            max = sumofElements(accounts[i]);
         }
         
     }
@@ -179,6 +231,87 @@ return arrCopy.get(k-1);
     
 }
 
+/* Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
+
+You must write an algorithm with O(log n) runtime complexity.
+
+ 
+
+Example 1:
+
+Input: nums = [1,3,5,6], target = 5
+Output: 2
+Example 2:
+
+Input: nums = [1,3,5,6], target = 2
+Output: 1
+Example 3:
+
+Input: nums = [1,3,5,6], target = 7
+Output: 4 */
+
+ int searchInsert(int[] nums, int target) {
+
+    int i; 
+
+    for (i= 0; i < nums.length; i++) {
+
+        if(target==nums[i]){
+            return i;
+        }
+
+        if(target < nums[i]){
+            return i;
+        }
+        
+    }
+
+    return i;      
+}
+
+
+/*  You are given a sorted array consisting of only integers where every element appears exactly twice, except for one element which appears exactly once.
+
+Return the single element that appears only once.
+
+Your solution must run in O(log n) time and O(1) space.
+
+ 
+
+Example 1:
+
+Input: nums = [1,1,2,3,3,4,4,8,8]
+Output: 2
+Example 2:
+
+Input: nums = [3,3,7,7,10,11,11]
+Output: 10 */
+
+public int singleNonDuplicate(int[] nums) {
+
+    if(nums.length==1){return nums[0];}
+
+    if(nums[0]!=nums[1]){
+        return nums[0];
+    }
+
+    if(nums[nums.length-1]!=nums[nums.length-2]){
+        return nums[nums.length-1];
+    }
+
+    for (int i = 1; i < nums.length-1; i++) {
+
+        if( (nums[i]!=nums[i+1] ) && (nums[i]!=nums[i-1]) ){
+            return nums[i];
+        }
+        
+    }
+
+    return Integer.MAX_VALUE;
+        
+}
+
+
 }
 
 
@@ -215,13 +348,19 @@ public class Linear_Search {
 
         //System.out.println(test.maxWealth(arr2d));
 
-        int []arrTest1 = {2,3,4,7,11};
+        // int []arrTest1 = {2,3,4,7,11};
         
-        System.out.println(test.findKthPositive(arrTest1, 5));
+        // System.out.println(test.findKthPositive(arrTest1, 5));
 
-        int []arrTest2 = {1,2,3,4};
+        // int []arrTest2 = {1,2,3,4};
 
-        System.out.println(test.findKthPositive(arrTest2, 2));
+        // System.out.println(test.findKthPositive(arrTest2, 2));
+
+        int []arrTest3 = {1,3,5,6};
+
+        System.out.println(test.searchInsert(arrTest3, 5));
+        System.out.println(test.searchInsert(arrTest3, 2));
+        System.out.println(test.searchInsert(arrTest3, 7));
 
        
     }
