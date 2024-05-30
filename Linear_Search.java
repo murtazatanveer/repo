@@ -311,6 +311,170 @@ public int singleNonDuplicate(int[] nums) {
         
 }
 
+/*  Given an array nums. We define a running sum of an array as runningSum[i] = sum(nums[0]…nums[i]).
+
+Return the running sum of nums.
+
+ 
+
+Example 1:
+
+Input: nums = [1,2,3,4]
+Output: [1,3,6,10]
+Explanation: Running sum is obtained as follows: [1, 1+2, 1+2+3, 1+2+3+4].
+Example 2:
+
+Input: nums = [1,1,1,1,1]
+Output: [1,2,3,4,5]
+Explanation: Running sum is obtained as follows: [1, 1+1, 1+1+1, 1+1+1+1, 1+1+1+1+1].
+Example 3:
+
+Input: nums = [3,1,2,10,1]
+Output: [3,4,6,16,17]
+ 
+
+Constraints:
+
+1 <= nums.length <= 1000
+-10^6 <= nums[i] <= 10^6 */
+
+  int[] runningSum(int[] nums) {
+
+    int []arr = new int[nums.length];
+
+    int sum=0;
+
+     for (int i = 0; i < nums.length; i++) {
+
+            sum += nums[i];
+            arr[i]=sum;
+
+     }
+
+     return arr;
+        
+    }
+
+    /*  You are given an m x n integer matrix matrix with the following two properties:
+
+Each row is sorted in non-decreasing order.
+The first integer of each row is greater than the last integer of the previous row.
+Given an integer target, return true if target is in matrix or false otherwise.
+
+You must write a solution in O(log(m * n)) time complexity.
+
+ 
+Example 1:
+
+
+Input: matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 3
+Output: true
+Example 2:
+
+
+Input: matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 13
+Output: false
+ 
+
+Constraints:
+
+m == matrix.length
+n == matrix[i].length
+1 <= m, n <= 100
+-104 <= matrix[i][j], target <= 104 */
+
+boolean searchMatrix(int[][] matrix, int target) {
+
+    if(matrix.length==1){
+
+        for (int i = 0; i < matrix[0].length; i++) {
+
+            if(matrix[0][i]>target){return false;}
+
+            if(target==matrix[0][i]){return true;}
+            
+        }
+    }
+
+    if(target<matrix[0][0] || target>matrix[matrix.length-1][matrix[(matrix.length-1)].length-1]){return false;}
+
+
+    for (int i = 0; i < matrix.length; i++) {
+        for (int j = 0; j < matrix[i].length; j++) {
+
+             if(matrix[i][j]>target){return false;}
+
+            if(matrix[i][j]==target){return true;}
+            
+        }
+               
+    }
+    return false;
+        
+    }
+
+    /*  Write an efficient algorithm that searches for a value target in an m x n integer matrix matrix. This matrix has the following properties:
+
+Integers in each row are sorted in ascending from left to right.
+Integers in each column are sorted in ascending from top to bottom.
+ 
+
+Example 1:
+
+
+Input: matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], target = 5
+Output: true
+Example 2:
+
+
+Input: matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], target = 20
+Output: false
+ 
+
+Constraints:
+
+m == matrix.length
+n == matrix[i].length
+1 <= n, m <= 300
+-109 <= matrix[i][j] <= 109
+All the integers in each row are sorted in ascending order.
+All the integers in each column are sorted in ascending order.
+-109 <= target <= 109
+ */
+
+     boolean searchMatrix2(int[][] matrix, int target) {
+        
+        if(matrix == null || matrix.length < 1 || matrix[0].length <1) {
+            return false;
+        }
+
+        if(matrix.length==1){
+
+            for (int i = 0; i < matrix[0].length; i++) {
+    
+                if(matrix[0][i]>target){return false;}
+    
+                if(target==matrix[0][i]){return true;}
+                
+            }
+        }
+    
+        if(target<matrix[0][0] || target>matrix[matrix.length-1][matrix[(matrix.length-1)].length-1]){return false;}
+    
+    
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+    
+                 if(matrix[i][j]>target){break;}
+    
+                if(matrix[i][j]==target){return true;}
+                
+            }
+                   
+        }
+        return false;
+
+    }
 
 }
 
@@ -356,11 +520,11 @@ public class Linear_Search {
 
         // System.out.println(test.findKthPositive(arrTest2, 2));
 
-        int []arrTest3 = {1,3,5,6};
+        // int []arrTest3 = {1,3,5,6};
 
-        System.out.println(test.searchInsert(arrTest3, 5));
-        System.out.println(test.searchInsert(arrTest3, 2));
-        System.out.println(test.searchInsert(arrTest3, 7));
+        // System.out.println(test.searchInsert(arrTest3, 5));
+        // System.out.println(test.searchInsert(arrTest3, 2));
+        // System.out.println(test.searchInsert(arrTest3, 7));
 
        
     }
