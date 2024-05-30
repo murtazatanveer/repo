@@ -13,6 +13,7 @@ int givenElementIndex(int []arr,int target){
         }
     }
 
+
     return -1;// Returns -1 if element doesnot exist in arr or arr is empty or null.
 }
 
@@ -115,7 +116,7 @@ int findNumbers(int[] nums) {
 }
 
 
-boolean isNumHasEvenDigits(int num){
+private boolean isNumHasEvenDigits(int num){
 
     if(num==0){return false;}
 
@@ -178,7 +179,7 @@ Output: 17 */
 
 }
 
-int sumofElements(int []arr){
+private int sumofElements(int []arr){
 
     if(arr==null || arr.length==0){return 0;}
 
@@ -476,6 +477,205 @@ All the integers in each column are sorted in ascending order.
 
     }
 
+    /*  There is an integer array nums sorted in ascending order (with distinct values).
+
+Prior to being passed to your function, nums is possibly rotated at an unknown pivot index k (1 <= k < nums.length) such that the resulting array is [nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]] (0-indexed). For example, [0,1,2,4,5,6,7] might be rotated at pivot index 3 and become [4,5,6,7,0,1,2].
+
+Given the array nums after the possible rotation and an integer target, return the index of target if it is in nums, or -1 if it is not in nums.
+
+You must write an algorithm with O(log n) runtime complexity.
+
+ 
+
+Example 1:
+
+Input: nums = [4,5,6,7,0,1,2], target = 0
+Output: 4
+Example 2:
+
+Input: nums = [4,5,6,7,0,1,2], target = 3
+Output: -1
+Example 3:
+
+Input: nums = [1], target = 0
+Output: -1
+ 
+
+Constraints:
+
+1 <= nums.length <= 5000
+-104 <= nums[i] <= 104
+All values of nums are unique.
+nums is an ascending array that is possibly rotated.
+-104 <= target <= 104 */
+
+int search(int[] nums, int target) {
+
+    if(nums==null || nums.length<1){return -1;}
+
+    for(int i = 0;i<nums.length;i++){
+        if(target==nums[i]){return i;}
+    }
+
+    return -1;
+        
+}
+
+/* 34. Find First and Last Position of Element in Sorted Array
+Medium
+Topics
+Companies
+Given an array of integers nums sorted in non-decreasing order, find the starting and ending position of a given target value.
+
+If target is not found in the array, return [-1, -1].
+
+You must write an algorithm with O(log n) runtime complexity.
+
+ 
+
+Example 1:
+
+Input: nums = [5,7,7,8,8,10], target = 8
+Output: [3,4]
+Example 2:
+
+Input: nums = [5,7,7,8,8,10], target = 6
+Output: [-1,-1]
+Example 3:
+
+Input: nums = [], target = 0
+Output: [-1,-1]
+ 
+
+Constraints:
+
+0 <= nums.length <= 105
+-109 <= nums[i] <= 109
+nums is a non-decreasing array.
+-109 <= target <= 109 */
+
+int[] searchRange(int[] nums, int target) {
+
+    if(nums==null | nums.length<1){return new int[]{-1,-1};}
+
+    else{
+
+    for (int i = 0; i < nums.length && nums[i]<=target; i++) {
+
+        if(target==nums[i]){
+            
+            return new int[]{i,similarNums(nums,i,target)};
+        }
+        
+    }
+
+}
+
+    return new int[]{-1,-1};
+        
+}
+
+private int similarNums(int nums[],int index,int target){
+    
+
+    for (int i = index+1; i < nums.length && nums[i]<=target; i++) {
+        
+        if(nums[i]==target){index ++;}               
+    }
+    return index;
+
+}
+
+
+/*  41. First Missing Positive
+Hard
+Topics
+Companies
+Hint
+Given an unsorted integer array nums. Return the smallest positive integer that is not present in nums.
+
+You must implement an algorithm that runs in O(n) time and uses O(1) auxiliary space.
+
+ 
+
+Example 1:
+
+Input: nums = [1,2,0]
+Output: 3
+Explanation: The numbers in the range [1,2] are all in the array.
+Example 2:
+
+Input: nums = [3,4,-1,1]
+Output: 2
+Explanation: 1 is in the array but 2 is missing.
+Example 3:
+
+Input: nums = [7,8,9,11,12]
+Output: 1
+Explanation: The smallest positive integer 1 is missing.
+ 
+
+Constraints:
+
+1 <= nums.length <= 105
+-231 <= nums[i] <= 231 - 1 */
+
+public int firstMissingPositive(int[] nums) {
+
+    int check=1;
+
+    while(true){
+
+        if(contains(nums,check)){
+            check++;
+        }
+        else{
+            return check;
+        }
+    }
+        
+}
+
+private boolean contains(int []arr,int check){
+
+    for (int i = 0; i < arr.length; i++) {
+        if(check==arr[i]){
+            return true;
+        }
+    }
+    return false;
+}
+
+// private int maxNum(int arr[]){
+
+//     int max = arr[0];
+    
+//     for (int i = 1; i < arr.length; i++){
+
+//         if(max<arr[i]){
+//             max=arr[i];
+//         }
+       
+//     }
+
+//     return max;
+// }
+
+// private int minNum(int arr[]){
+
+//     int min = arr[0];
+    
+//     for (int i = 1; i < arr.length; i++){
+
+//         if(min>arr[i]){
+//             min=arr[i];
+//         }
+       
+//     }
+
+//     return min;
+// }
+
 }
 
 
@@ -483,7 +683,7 @@ public class Linear_Search {
 
     public static void main(String [] args){
 
-         linerSearch test = new linerSearch();
+         //linerSearch test = new linerSearch();
 
          //int []arr = {101,134,67,4,90,163,1111,63,10101,555,-99,0};
 
