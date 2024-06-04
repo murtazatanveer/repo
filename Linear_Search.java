@@ -1240,30 +1240,30 @@ Constraints:
 num1 and num2 consist of only digits.
 num1 and num2 don't have any leading zeros except for the zero itself. */
 
-String addStrings(String num1, String num2) {
+// String addStrings(String num1, String num2) {
     
-    int min,max;
+//     int min,max;
 
-    if(num1.length()>=num2.length()){
-        max=num1.length();
-        min=num2.length();
-    }else{
-        min=num1.length();
-        max=num2.length();
-    }
+//     if(num1.length()>=num2.length()){
+//         max=num1.length();
+//         min=num2.length();
+//     }else{
+//         min=num1.length();
+//         max=num2.length();
+//     }
 
-    int r=0;
+//     int r=0;
 
-    String sum="";
+//     String sum="";
 
-    for(int i=min-1;i>=0;i--){
+//     for(int i=min-1;i>=0;i--){
 
-        sum += (((num1.charAt(i)-48) + (num2.charAt(i)-48)) % 10) + r;
-        r=((num1.charAt(i)-48) + (num2.charAt(i)-48))/10;
+//         sum += (((num1.charAt(i)-48) + (num2.charAt(i)-48)) % 10) + r;
+//         r=((num1.charAt(i)-48) + (num2.charAt(i)-48))/10;
 
-    }
+//     }
 
-}
+// }
 
     /* 412. Fizz Buzz
 Easy
@@ -1312,8 +1312,149 @@ List<String> fizzBuzz(int n) {
         }
     }
 
-    return result;
-           
+    return result;           
+}
+
+/* 2643. Row With Maximum Ones
+Easy
+Topics
+Companies
+Hint
+Given a m x n binary matrix mat, find the 0-indexed position of the row that contains the maximum count of ones, and the number of ones in that row.
+
+In case there are multiple rows that have the maximum count of ones, the row with the smallest row number should be selected.
+
+Return an array containing the index of the row, and the number of ones in it.
+
+ 
+
+Example 1:
+
+Input: mat = [[0,1],[1,0]]
+Output: [0,1]
+Explanation: Both rows have the same number of 1's. So we return the index of the smaller row, 0, and the maximum count of ones (1). So, the answer is [0,1]. 
+Example 2:
+
+Input: mat = [[0,0,0],[0,1,1]]
+Output: [1,2]
+Explanation: The row indexed 1 has the maximum count of ones (2). So we return its index, 1, and the count. So, the answer is [1,2].
+Example 3:
+
+Input: mat = [[0,0],[1,1],[0,0]]
+Output: [1,2]
+Explanation: The row indexed 1 has the maximum count of ones (2). So the answer is [1,2].
+ 
+
+Constraints:
+
+m == mat.length 
+n == mat[i].length 
+1 <= m, n <= 100 
+mat[i][j] is either 0 or 1. */
+
+int[] rowAndMaximumOnes(int[][] mat) {
+
+    int max=countOnes(mat[0]);
+    int ones;
+    int index=0;
+
+        for (int i = 1; i < mat.length; i++) {  
+            ones = countOnes(mat[i]);        
+            if(ones>max){
+                max=ones;
+                index=i;
+            }
+        }
+
+        return new int[]{index,max};
+}
+
+private int countOnes(int []arr){
+    int count=0;
+    
+    for (int i = 0; i < arr.length; i++) {
+        if (arr[i]==1) {count++;}
+    }
+    return count;
+}
+
+/* 2614. Prime In Diagonal
+Easy
+Topics
+Companies
+Hint
+You are given a 0-indexed two-dimensional integer array nums.
+
+Return the largest prime number that lies on at least one of the diagonals of nums. In case, no prime is present on any of the diagonals, return 0.
+
+Note that:
+
+An integer is prime if it is greater than 1 and has no positive integer divisors other than 1 and itself.
+An integer val is on one of the diagonals of nums if there exists an integer i for which nums[i][i] = val or an i for which nums[i][nums.length - i - 1] = val.
+
+
+In the above diagram, one diagonal is [1,5,9] and another diagonal is [3,5,7].
+
+ 
+
+Example 1:
+
+Input: nums = [[1,2,3],[5,6,7],[9,10,11]]
+Output: 11
+Explanation: The numbers 1, 3, 6, 9, and 11 are the only numbers present on at least one of the diagonals. Since 11 is the largest prime, we return 11.
+Example 2:
+
+Input: nums = [[1,2,3],[5,17,7],[9,11,10]]
+Output: 17
+Explanation: The numbers 1, 3, 9, 10, and 17 are all present on at least one of the diagonals. 17 is the largest prime, so we return 17.
+ 
+
+Constraints:
+
+1 <= nums.length <= 300
+nums.length == numsi.length
+1 <= nums[i][j] <= 4*106 */
+
+public int diagonalPrime(int[][] nums) {
+
+    int size = nums.length%2==0 ? nums.length/2 : (nums.length/2)+1;
+
+    int max = Integer.MIN_VALUE;
+    int i;
+    for(i=0;i<size;i++){
+        for(int j=0;j<nums.length;j++){
+
+            if(i==j || j==(nums.length-1-i)){
+                max = isPrime(nums[i][j]) && nums[i][j] > max ? nums[i][j] : max;
+            }
+            
+        }
+    }
+
+   
+
+        for(int i1=i;i1<nums.length;i++){
+            for(int j=0;j<nums.length;j++){
+
+                 if(i1==j || j==(nums.length-1-i1)){
+                    max = isPrime(nums[i1][j]) && nums[i1][j] > max ? nums[i1][j] : max;
+                 }
+                     
+        }
+    }
+
+    return max;
+}
+
+private boolean isPrime(int num){
+
+    for(int i=2;i<num;i++){
+        if(num%i==0){
+         return false;
+        }
+    }
+    return true;
+    
 }
 
 }
@@ -1364,6 +1505,8 @@ public class Linear_Search {
         // System.out.println(test.searchInsert(arrTest3, 5));
         // System.out.println(test.searchInsert(arrTest3, 2));
         // System.out.println(test.searchInsert(arrTest3, 7));
+
+       
 
        
     }
