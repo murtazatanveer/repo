@@ -4,7 +4,7 @@ class binarySearch{
 
     // Binary Search for both Assending and Decending order.
 
-    int binary_search(int []arr,int target){
+   private int binary_search(int []arr,int target){
 
         int start=0;
         int mid;
@@ -41,11 +41,11 @@ class binarySearch{
 
     }
 
-    // return the index of Target Element But the array is in Assending Orderz.
+    // return the index of Target Element But the array is in Assending Order.
 
-    int search(int[] nums, int target){
-     
-        int start = 0;
+   private int search(int[] nums, int target){
+
+        int start=0;    
         int end = nums.length-1;
         int mid;
 
@@ -93,7 +93,7 @@ Constraints:
 1 <= nums1[i], nums2[j] <= 109
 Both nums1 and nums2 are sorted in non-decreasing order. */
 
-public int getCommon(int[] nums1, int[] nums2) {
+int getCommon(int[] nums1, int[] nums2) {
         
     for (int n : nums1) {
         if(isElementExist(nums2, n)){
@@ -247,7 +247,251 @@ int totalMoney(int n) {
     return sum;
 }
 
+/*  744. Find Smallest Letter Greater Than Target
 
+You are given an array of characters letters that is sorted in non-decreasing order, and a character target. There are at least two different characters in letters.
+
+Return the smallest character in letters that is lexicographically greater than target. If such a character does not exist, return the first character in letters.
+
+ 
+
+Example 1:
+
+Input: letters = ["c","f","j"], target = "a"
+Output: "c"
+Explanation: The smallest character that is lexicographically greater than 'a' in letters is 'c'.
+Example 2:
+
+Input: letters = ["c","f","j"], target = "c"
+Output: "f"
+Explanation: The smallest character that is lexicographically greater than 'c' in letters is 'f'.
+Example 3:
+
+Input: letters = ["x","x","y","y"], target = "z"
+Output: "x"
+Explanation: There are no characters in letters that is lexicographically greater than 'z' so we return letters[0].
+ 
+
+Constraints:
+
+2 <= letters.length <= 104
+letters[i] is a lowercase English letter.
+letters is sorted in non-decreasing order.
+letters contains at least two different characters.
+target is a lowercase English letter. */
+
+
+char nextGreatestLetter(char[] letters, char target) {
+        
+    int index = Charsearch(letters, target);
+
+    if(letters[index]!=target){
+
+        if(letters[index]>target && index>0){
+        return letters[index];
+    }
+
+    else if(letters[index]<target && index<letters.length-1){
+        return letters[index+1];
+    }
+}
+
+    else if(target==letters[index]){
+        for (int i = index+1; i < letters.length; i++) {
+            if(letters[i]!=target){
+                return letters[i];
+            }
+        }
+    }
+
+    return letters[0];
+
+}
+
+private int Charsearch(char []alpha, char target){
+     
+    int start = 0;
+    int end = alpha.length-1;
+    int mid=Integer.MIN_VALUE;
+
+    while (start<=end) {
+
+        mid = start + ((end-start)/2);
+
+        if(target>alpha[mid]){
+            start=mid+1;
+        }
+        else if(target<alpha[mid]){
+            end = mid-1;
+        }
+        else{
+            return mid;
+        }         
+        
+    }
+    return mid;
+
+}
+
+/* 162. Find Peak Element
+Medium
+Topics
+Companies
+A peak element is an element that is strictly greater than its neighbors.
+
+Given a 0-indexed integer array nums, find a peak element, and return its index. If the array contains multiple peaks, return the index to any of the peaks.
+
+You may imagine that nums[-1] = nums[n] = -∞. In other words, an element is always considered to be strictly greater than a neighbor that is outside the array.
+
+You must write an algorithm that runs in O(log n) time.
+
+ 
+
+Example 1:
+
+Input: nums = [1,2,3,1]
+Output: 2
+Explanation: 3 is a peak element and your function should return the index number 2.
+Example 2:
+
+Input: nums = [1,2,1,3,5,6,4]
+Output: 5
+Explanation: Your function can return either index number 1 where the peak element is 2, or index number 5 where the peak element is 6.
+ 
+
+Constraints:
+
+1 <= nums.length <= 1000
+-231 <= nums[i] <= 231 - 1
+nums[i] != nums[i + 1] for all valid i. */
+
+int findPeakElement(int[] nums) {
+   
+    for (int i = 1; i < nums.length; i++) {
+        if(nums[i]<nums[i-1]){
+            return i-1;
+        }
+    }
+return nums.length-1;
+
+}
+
+/* 34. Find First and Last Position of Element in Sorted Array
+Solved
+Medium
+Topics
+Companies
+Given an array of integers nums sorted in non-decreasing order, find the starting and ending position of a given target value.
+
+If target is not found in the array, return [-1, -1].
+
+You must write an algorithm with O(log n) runtime complexity.
+
+ 
+
+Example 1:
+
+Input: nums = [5,7,7,8,8,10], target = 8
+Output: [3,4]
+Example 2:
+
+Input: nums = [5,7,7,8,8,10], target = 6
+Output: [-1,-1]
+Example 3:
+
+Input: nums = [], target = 0
+Output: [-1,-1]
+ 
+
+Constraints:
+
+0 <= nums.length <= 105
+-109 <= nums[i] <= 109
+nums is a non-decreasing array.
+-109 <= target <= 109 */
+
+ int[] searchRange(int[] nums, int target) {
+
+    int []answer = new int[]{-1,-1};
+
+    answer[0]=searchIndex(nums, target, true);
+    answer[1]=searchIndex(nums, target, false);
+    return answer;    
+        
+        }
+
+    private int searchIndex(int []arr , int target , boolean firstIndex){
+
+        int start = 0;
+        int end = arr.length-1;
+        int mid=Integer.MIN_VALUE;
+        int ans=-1;
+
+        while(start<=end){
+
+            mid = start + ((end-start)/2);
+
+            if(arr[mid]<target){
+                start = mid +1;
+                }
+            else if(arr[mid]>target){
+                end=mid-1;
+            }
+
+            else{
+                ans=mid;
+                if(firstIndex){
+                end=mid-1;
+                }
+                else{
+                    start =mid+1;
+                }
+            }
+           
+        }
+        return ans;
+
+    }
+
+    // AMAZON Interview Question.
+    // Find the Position of an element in  an infinite sorted array.(Binary Search)
+    // We cannot use the arr.length or any other way to find the length of array.
+    // We assume wo cannot know the size of array.
+
+    int searchInInfiniteArray(int arr[] , int target){
+
+        int start = 0;
+        int end = 1;
+        int mid = Integer.MIN_VALUE;
+
+        while (start<=end) {
+
+            if(arr[end]<target){
+                start=end;
+                end *= 2;
+                
+            }
+
+            else{
+
+            mid = start + ((end-start)/2);
+
+            if(arr[mid]>target){
+                end=mid-1;
+            }
+            else if(arr[mid]<target){
+                start=mid+1;
+            }else{
+                return mid;
+            }
+
+        }
+  
+        }
+
+    return -1;
+
+    }
 }
 
 
@@ -256,8 +500,15 @@ public class Binary_Search {
 
     public static void main(String[] args) {
         
-        //  binarySearch test = new binarySearch();
+          binarySearch test = new binarySearch();
         //  System.out.println(test.binary_search(new int[]{-100,-10,-7,-3,0,4,6,12,20,25,100}, 25));
+        //System.out.println(test.nextGreatestLetter(new char[]{'c','d','f','j','w','y'}, 'e'));
+
+        System.out.println(test.searchInInfiniteArray(new int[]{2,5,7,11,12,13,19,22,27,29,30,35}, 29));
+
     }
+
+   
+    
     
 }
