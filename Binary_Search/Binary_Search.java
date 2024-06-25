@@ -4,12 +4,10 @@ class binarySearch{
 
     // Binary Search for both Assending and Decending order.
 
-   private int binary_search(int []arr,int target){
+     int binary_search(int []arr,int target,int start,int end){
 
-        int start=0;
         int mid;
-        int end=arr.length-1;
-
+       
         boolean isAssen = arr[start]<=arr[end];
 
         while (start<=end){
@@ -37,13 +35,14 @@ class binarySearch{
             }
 
         }
+        
         return -1;
 
     }
 
     // return the index of Target Element But the array is in Assending Order.
 
-   private int search(int[] nums, int target){
+    int searchInAssendingArray(int[] nums, int target){
 
         int start=0;    
         int end = nums.length-1;
@@ -492,6 +491,227 @@ nums is a non-decreasing array.
     return -1;
 
     }
+
+/* 852. Peak Index in a Mountain Array
+
+You are given an integer mountain array arr of length n where the values increase to a peak element and then decrease.
+
+Return the index of the peak element.
+
+Your task is to solve it in O(log(n)) time complexity.
+
+ 
+
+Example 1:
+
+Input: arr = [0,1,0]
+
+Output: 1
+
+Example 2:
+
+Input: arr = [0,2,1,0]
+
+Output: 1
+
+Example 3:
+
+Input: arr = [0,10,5,2]
+
+Output: 1
+
+ 
+
+Constraints:
+
+3 <= arr.length <= 105
+0 <= arr[i] <= 106
+arr is guaranteed to be a mountain array. */
+
+int peakIndexInMountainArray(int[] arr) {
+
+    int start = 0;
+    int end = arr.length-1;
+    int mid = Integer.MIN_VALUE;
+
+    while (start<=end){
+
+        mid = start + ((end-start)/2);
+
+        if(arr[mid+1]>arr[mid]){
+            start=mid+1;
+        }
+        else if(arr[mid-1]>arr[mid]){
+            end=mid-1;
+        }
+        else{
+            return mid;
+        }
+        
+    }
+
+    return -1;
+}
+
+/* 
+ 1095. Find in Mountain Array
+
+(This problem is an interactive problem.)
+
+You may recall that an array arr is a mountain array if and only if:
+
+arr.length >= 3
+There exists some i with 0 < i < arr.length - 1 such that:
+arr[0] < arr[1] < ... < arr[i - 1] < arr[i]
+arr[i] > arr[i + 1] > ... > arr[arr.length - 1]
+Given a mountain array mountainArr, return the minimum index such that mountainArr.get(index) == target. If such an index does not exist, return -1.
+
+You cannot access the mountain array directly. You may only access the array using a MountainArray interface:
+
+MountainArray.get(k) returns the element of the array at index k (0-indexed).
+MountainArray.length() returns the length of the array.
+Submissions making more than 100 calls to MountainArray.get will be judged Wrong Answer. Also, any solutions that attempt to circumvent the judge will result in disqualification.
+
+ 
+
+Example 1:
+
+Input: array = [1,2,3,4,5,3,1], target = 3
+Output: 2
+Explanation: 3 exists in the array, at index=2 and index=5. Return the minimum index, which is 2.
+Example 2:
+
+Input: array = [0,1,2,4,2,1], target = 3
+Output: -1
+Explanation: 3 does not exist in the array, so we return -1.
+ 
+
+Constraints:
+
+3 <= mountain_arr.length() <= 104
+0 <= target <= 109
+0 <= mountain_arr.get(index) <= 109
+ */
+
+//  public int findInMountainArray(int target, MountainArray mountainArr) {
+
+//     int length = mountainArr.length();
+
+//     int peakIndex =  peakIndexInMountainArray(mountainArr);
+
+//     int index = binary_search( mountainArr,target,0,peakIndex);
+
+//     return index==-1 ? binary_search(mountainArr,target,peakIndex,length-1) : index;
+
+    
+// }
+// int peakIndexInMountainArray(MountainArray arr) {
+
+// int start = 0;
+// int end = arr.length()-1;
+// int mid = Integer.MIN_VALUE;
+// int midVal;
+
+// while (start<=end){
+
+//     mid = start + ((end-start)/2);
+//     midVal = arr.get(mid);
+
+//     if(arr.get(mid+1)>midVal){
+//         start=mid+1;
+//     }
+//     else if(arr.get(mid-1)>midVal){
+//         end=mid-1;
+//     }
+//     else{
+//         return mid;
+//     }
+    
+// }
+
+// return -1;
+// }
+
+// int binary_search(MountainArray arr,int target,int start,int end){
+
+//     int mid;
+//     int midVal;
+   
+//     boolean isAssen = arr.get(start)<=arr.get(end);
+
+//     while (start<=end){
+
+//         mid = start + ((end-start)/2);
+//         midVal = arr.get(mid);
+
+//         if( midVal==target){return mid;}
+
+//         if(isAssen){
+
+//             if( midVal<target){
+//                 start=mid+1;
+//             }else{
+//                 end=mid-1;
+//             }
+
+//         }else{
+
+//             if( midVal<target){
+//                 end=mid-1;
+//             }else{
+//                 start=mid+1;
+//             }
+
+//         }
+
+//     }
+    
+//     return -1;
+
+// }
+
+
+/* 33. Search in Rotated Sorted Array
+
+There is an integer array nums sorted in ascending order (with distinct values).
+
+Prior to being passed to your function, nums is possibly rotated at an unknown pivot index k (1 <= k < nums.length) such that the resulting array is [nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]] (0-indexed). For example, [0,1,2,4,5,6,7] might be rotated at pivot index 3 and become [4,5,6,7,0,1,2].
+
+Given the array nums after the possible rotation and an integer target, return the index of target if it is in nums, or -1 if it is not in nums.
+
+You must write an algorithm with O(log n) runtime complexity.
+
+ 
+
+Example 1:
+
+Input: nums = [4,5,6,7,0,1,2], target = 0
+Output: 4
+Example 2:
+
+Input: nums = [4,5,6,7,0,1,2], target = 3
+Output: -1
+Example 3:
+
+Input: nums = [1], target = 0
+Output: -1
+ 
+
+Constraints:
+
+1 <= nums.length <= 5000
+-104 <= nums[i] <= 104
+All values of nums are unique.
+nums is an ascending array that is possibly rotated.
+-104 <= target <= 104 */
+
+int search(int[] nums, int target){
+    
+
+    
+    return -1;
+}
+
 }
 
 
@@ -504,7 +724,7 @@ public class Binary_Search {
         //  System.out.println(test.binary_search(new int[]{-100,-10,-7,-3,0,4,6,12,20,25,100}, 25));
         //System.out.println(test.nextGreatestLetter(new char[]{'c','d','f','j','w','y'}, 'e'));
 
-        System.out.println(test.searchInInfiniteArray(new int[]{2,5,7,11,12,13,19,22,27,29,30,35}, 29));
+        System.out.println(test.searchInInfiniteArray(new int[]{2,5,7,11,12,13,19,22,27,29,30,35}, 100));
 
     }
 
