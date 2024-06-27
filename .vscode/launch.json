@@ -6,6 +6,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ReadBinaryFileExample",
+            "request": "launch",
+            "mainClass": "ReadBinaryFileExample",
+            "projectName": "repo_a7d2b8ac"
+        },
+        {
+            "type": "java",
+            "name": "WriteBinaryFileExample",
+            "request": "launch",
+            "mainClass": "WriteBinaryFileExample",
+            "projectName": "repo_a7d2b8ac"
+        },
+        {
+            "type": "java",
+            "name": "UserInputExample",
+            "request": "launch",
+            "mainClass": "UserInputExample",
+            "projectName": "repo_a7d2b8ac"
+        },
+        {
+            "type": "java",
             "name": "abc",
             "request": "launch",
             "mainClass": "abc",
