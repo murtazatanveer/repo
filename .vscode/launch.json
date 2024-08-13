@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Bubble_Sort",
+            "request": "launch",
+            "mainClass": "Bubble_Sort",
+            "projectName": "repo_2006df3d"
+        },
+        {
+            "type": "java",
             "name": "ReadBinaryFileExample",
             "request": "launch",
             "mainClass": "ReadBinaryFileExample",
