@@ -134,7 +134,7 @@ class linkedList{
 
 }
 
-    void addAtIndex(int index,int digit){
+    void addDigitAtIndex(int index,int digit){
 
         if (head==null) {
             System.out.println("Error : Empty List");
@@ -163,6 +163,59 @@ class linkedList{
      }
     }
 
+    void deleteFromEnd(){
+
+        if (head==null) {
+            System.out.println("Error : Empty List");
+            return;
+        }
+
+        node move = head;
+
+       int size = size();
+
+       for (int i = 0; i < size-2; i++) {
+        move=move.next;
+       }
+
+       move.next=null;
+
+    }
+
+    void insertAfterIndex(int index , int digit){
+
+        if (head==null) {
+            System.out.println("Error : Empty List");
+            
+        }
+
+        else if (index<0 || index>=size()){
+            System.out.println("Error : Linked list index out of bounds");
+            
+        }
+
+        else{
+
+            node move=head;
+            node newDigit = new node(digit);
+            int count=-1;
+    
+            while (move!=null) {
+                count++;
+                if(count==index){
+                    newDigit.next=move.next;
+                    move.next=newDigit;
+                    break;
+                }
+                move=move.next;
+            }
+    
+         }
+
+        
+
+    }
+
 }
 
 public class list {
@@ -177,11 +230,14 @@ public class list {
         arr.addAnElement(40);
         
         arr.displayAllDigits();
-
-        arr.addAtIndex(2, 777);
-        arr.delete(0);
-        arr.addAtIndex(0, 222);
+        //arr.deleteFromEnd();
+        arr.insertAfterIndex(2, -88);
         arr.displayAllDigits();
+
+        // arr.addAtIndex(2, 777);
+        // arr.delete(0);
+        // arr.addAtIndex(0, 222);
+        // arr.displayAllDigits();
 
         System.out.println("Size : "+arr.size());
     }
