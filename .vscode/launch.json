@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "exe",
+      "request": "launch",
+      "mainClass": "Linked_List.exe",
+      "projectName": "repo_e36dc20f"
+    },
+    {
+      "type": "java",
       "name": "list",
       "request": "launch",
       "mainClass": "Linked_List.list",
