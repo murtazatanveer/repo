@@ -17,11 +17,11 @@ class node {
     }
     
     
-    public class linkedList{
+    public class singlyLinkedList{
     
         node head;
     
-        public linkedList(){
+        public singlyLinkedList(){
             head=null;
         }
     
@@ -167,6 +167,15 @@ class node {
  
            move.next=null;
     
+        }
+
+        public void deleteFromStart(){
+            if (head==null) {
+                System.out.println("Error : Empty List");
+                return;
+            }
+           head=head.next;
+
         }
     
         public void insertAfterIndex(int index , int digit){

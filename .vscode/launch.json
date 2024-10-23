@@ -6,6 +6,55 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Q8",
+      "request": "launch",
+      "mainClass": "fahadAssignment.Q8",
+      "projectName": "repo_e36dc20f"
+    },
+    {
+      "type": "java",
+      "name": "Q5",
+      "request": "launch",
+      "mainClass": "fahadAssignment.Q5",
+      "projectName": "repo_e36dc20f"
+    },
+    {
+      "type": "java",
+      "name": "Q4",
+      "request": "launch",
+      "mainClass": "fahadAssignment.Q4",
+      "projectName": "repo_e36dc20f"
+    },
+    {
+      "type": "java",
+      "name": "Q3",
+      "request": "launch",
+      "mainClass": "fahadAssignment.Q3",
+      "projectName": "repo_e36dc20f"
+    },
+    {
+      "type": "java",
+      "name": "Q1",
+      "request": "launch",
+      "mainClass": "fahadAssignment.Q1",
+      "projectName": "repo_e36dc20f"
+    },
+    {
+      "type": "java",
+      "name": "Main",
+      "request": "launch",
+      "mainClass": "Linked_List.Main",
+      "projectName": "repo_e36dc20f"
+    },
+    {
+      "type": "java",
+      "name": "doublyLinkedList",
+      "request": "launch",
+      "mainClass": "Linked_List.doublyLinkedList",
+      "projectName": "repo_e36dc20f"
+    },
+    {
+      "type": "java",
       "name": "exe",
       "request": "launch",
       "mainClass": "Linked_List.exe",
