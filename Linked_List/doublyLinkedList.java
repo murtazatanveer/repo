@@ -97,56 +97,54 @@ class node{
         return;
     }
 
-    node move=head;
-    node move2 = head;
-
-    if(index>=(int)((size-1)/2)){
+    node move;
+  
+    if(index>(int)((size-1)/2)){
 
          move=tail;
-        move2=tail;
-        
 
+         if (index==(size-1)){
+            tail=tail.prev;
+            tail.next.prev=null;
+            tail.next=null;
+            return;
+        }
+ 
         for(int i=size-1;i>index;i--){
-            move2=move;
             move=move.prev;
         }
 
-        if(move.prev==null){
-            move=null;
-            return;
-        }
-        
-                
-        move=move.prev;
-        move2.prev=move;
-        move.next=move2;
+        move.prev.next=move.next;
+        move.next.prev=move.prev;
+        move.next=null;
+        move.prev=null;
+        move=null;
 
     }
 
     else{
+
         move=head;
-        move2=head;
-        
+
+        if (index==0){
+            head=head.next;
+            head.prev.next=null;
+            head.prev=null;
+            return;
+        }
 
         for(int i=0;i<index;i++){
-            move2=move;
+            
             move=move.next;
         }
 
-        if(move.next==null){
-            move=null;
-            return;
-        }
-                
-        move=move.next;
-        move2.next=move;
-        move.prev=move2;
-              
+        move.prev.next=move.next;
+        move.next.prev=move.prev;
+        move.prev=null;
+        move.next=null;
+        move=null;           
 
     }
-    
-
-    
 
  }
 
@@ -192,12 +190,14 @@ public class doublyLinkedList {
 
        list.addAnElement(10);
         list.addAnElement(15);
-    //    list.addAnElement(25);
-    //    list.addAnElement(20);
+        list.addAnElement(25);
+        list.addAnElement(20);
     //    list.addAnElement(50);
     //    list.addAtStart(100);
     //    list.displayAllNumbers();
-       list.delete(1);
+    //    list.delete(1);
+    //    list.deleteAtEnd();
+    //    list.deleteAtStart();
     //    System.out.println("Size : "+list.size());
        
     //    list.deleteAtStart();

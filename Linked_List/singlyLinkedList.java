@@ -113,25 +113,20 @@ class node {
     
     
             else{
-    
-        node curr = head;
-        node prev = head;
-    
-        int count=-1;
-    
-        while(curr!=null){
-            count++;
-            if(count==index){
-                prev.next=curr.next;
-                curr=null;
-                break;
-            }
-            
-            prev=curr;
-            curr=curr.next;
-        }
-        
-      } 
+
+                node move = head;
+
+                for (int i = 0; i < index-1; i++) {
+                    move=move.next;
+                }
+
+                node temp=move.next;
+                move.next=move.next.next;
+                temp.next=null;
+                temp=null;
+                move=null;
+
+        } 
     
     }
     

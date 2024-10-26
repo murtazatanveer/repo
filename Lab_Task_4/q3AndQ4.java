@@ -20,7 +20,7 @@ class node{
  private node head;
  private node tail;
 
- // Question No 3 : 3.	Write a program to insert new node in doubly linked list.  insertion can be at start, in the middle of list and at the end of list. Same case for deletion
+ // Question No 3 : Write a program to insert new node in doubly linked list.  insertion can be at start, in the middle of list and at the end of list. Same case for deletion
 
  void addAnElement(int digit){ //Method to add an element at the end
 
@@ -99,60 +99,54 @@ class node{
         return;
     }
 
-    node move=head;
-    node move2 = head;
-
-    if(index>=(int)((size-1)/2)){
+    node move;
+  
+    if(index>(int)((size-1)/2)){
 
          move=tail;
-        move2=tail;
-        
 
-        for(int i=size-1;i>index;i--){
-            move2=move;
-            move=move.prev;
-        }
-
-        if(move.next==null){
-            move2=move;
-            move=move.prev;
-            move2.prev=null;
-            move.next=null;
-            
+         if (index==(size-1)){
+            tail=tail.prev;
+            tail.next.prev=null;
+            tail.next=null;
             return;
         }
-        
-                
-        move=move.prev;
-        move2.prev=move;
-        move.next=move2;
+ 
+        for(int i=size-1;i>index;i--){
+            move=move.prev;
+        }
+
+        move.prev.next=move.next;
+        move.next.prev=move.prev;
+        move.next=null;
+        move.prev=null;
+        move=null;
 
     }
 
     else{
+
         move=head;
-        move2=head;
-        
 
-        for(int i=0;i<index;i++){
-            move2=move;
-            move=move.next;
-        }
-
-        if(move.prev==null){
-            move2=move;
-            move=move.next;
-            move2.next=null;
-            move.prev=null;
+        if (index==0){
+            head=head.next;
+            head.prev.next=null;
+            head.prev=null;
             return;
         }
-                
-        move=move.next;
-        move2.next=move;
-        move.prev=move2;          
+
+        for(int i=0;i<index;i++){
+            
+            move=move.next;
+        }
+
+        move.prev.next=move.next;
+        move.next.prev=move.prev;
+        move.prev=null;
+        move.next=null;
+        move=null;           
 
     }
-    
 
  }
 
