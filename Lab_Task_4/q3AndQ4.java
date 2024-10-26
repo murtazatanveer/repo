@@ -1,4 +1,4 @@
-package Linked_List;
+package Lab_Task_4;
 
 class node{
 
@@ -15,12 +15,14 @@ class node{
     }
 }
 
- class List {
+ class doublyLinkedList {
     
  private node head;
  private node tail;
 
- void addAnElement(int digit){
+ // Question No 3 : 3.	Write a program to insert new node in doubly linked list.  insertion can be at start, in the middle of list and at the end of list. Same case for deletion
+
+ void addAnElement(int digit){ //Method to add an element at the end
 
     node newDigit = new node(digit);
 
@@ -111,8 +113,12 @@ class node{
             move=move.prev;
         }
 
-        if(move.prev==null){
-            move=null;
+        if(move.next==null){
+            move2=move;
+            move=move.prev;
+            move2.prev=null;
+            move.next=null;
+            
             return;
         }
         
@@ -133,19 +139,19 @@ class node{
             move=move.next;
         }
 
-        if(move.next==null){
-            move=null;
+        if(move.prev==null){
+            move2=move;
+            move=move.next;
+            move2.next=null;
+            move.prev=null;
             return;
         }
                 
         move=move.next;
         move2.next=move;
-        move.prev=move2;
-              
+        move.prev=move2;          
 
     }
-    
-
     
 
  }
@@ -179,36 +185,29 @@ void deleteAtEnd(){
     tail=temp;
 
 }
+
+//Question No 4 : Write a program to search an element in doubly linked list.
+node searchElement(int val){
+
+    if(head==null || tail==null){
+        System.out.println("Error : Empty List");
+        return null;
+    }
+
+    node move=head;
+    
+
+    while (move!=null) {
+        if(move.digit==val){
+            return move;
+        }
+        move=move.next;
+    }
+    
+    return null; // return null means value not found in list
+
+}
    
 }
 
 
-
-public class doublyLinkedList {
-
-    public static void main(String[] args) {
-    
-        List list = new List();
-
-       list.addAnElement(10);
-        list.addAnElement(15);
-    //    list.addAnElement(25);
-    //    list.addAnElement(20);
-    //    list.addAnElement(50);
-    //    list.addAtStart(100);
-    //    list.displayAllNumbers();
-       list.delete(1);
-    //    System.out.println("Size : "+list.size());
-       
-    //    list.deleteAtStart();
-  
-    //    list .displayAllNumbers();
-       
-    //    System.out.println("Size : "+list.size());
-
-    //    list.deleteAtEnd();
-       //list.addAnElement(-99);
-       list.displayAllNumbers();
-
- }
-}

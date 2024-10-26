@@ -6,6 +6,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "q3AndQ4",
+      "request": "launch",
+      "mainClass": "Lab_Task_4.q3AndQ4",
+      "projectName": "repo_e36dc20f"
+    },
+    {
+      "type": "java",
+      "name": "Q1",
+      "request": "launch",
+      "mainClass": "Lab_Task_4.Q1",
+      "projectName": "repo_e36dc20f"
+    },
+    {
+      "type": "java",
       "name": "Q8",
       "request": "launch",
       "mainClass": "fahadAssignment.Q8",
