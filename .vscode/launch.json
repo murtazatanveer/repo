@@ -6,6 +6,27 @@
   "configurations": [
     {
       "type": "java",
+      "name": "linkedList",
+      "request": "launch",
+      "mainClass": "Linked_List.linkedList",
+      "projectName": "repo_e36dc20f"
+    },
+    {
+      "type": "java",
+      "name": "q4",
+      "request": "launch",
+      "mainClass": "Assinment_No_1.q4",
+      "projectName": "repo_e36dc20f"
+    },
+    {
+      "type": "java",
+      "name": "q1AndQ2AndQ3",
+      "request": "launch",
+      "mainClass": "Assinment_No_1.q1AndQ2AndQ3",
+      "projectName": "repo_e36dc20f"
+    },
+    {
+      "type": "java",
       "name": "q3AndQ4",
       "request": "launch",
       "mainClass": "Lab_Task_4.q3AndQ4",

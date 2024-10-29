@@ -1,5 +1,4 @@
 package Linked_List;
-
 class node {
 
     int digit;
@@ -114,12 +113,7 @@ class node {
     
             else{
 
-                node move = head;
-
-                for (int i = 0; i < index-1; i++) {
-                    move=move.next;
-                }
-
+                node move = findNode(index-1);
                 node temp=move.next;
                 move.next=move.next.next;
                 temp.next=null;

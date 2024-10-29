@@ -15,10 +15,13 @@ class node{
     }
 }
 
- class List {
+ public class doublyLinkedList {
     
  private node head;
  private node tail;
+
+ 
+ 
 
  void addAnElement(int digit){
 
@@ -56,6 +59,8 @@ class node{
 
  }
 
+
+
  void addAtStart(int digit){
 
     node newDigit = new node(digit);
@@ -92,8 +97,16 @@ class node{
 
     int size = size();
 
-    if(index<0 || index>=size){
-        System.out.println("Error : Linked List Index Out of Bounds");
+    if(index<0 || index>=size || head==null || tail==null){
+        System.out.println("Error : Linked List Index Out of Bounds or List is empty");
+        return;
+    }
+
+    
+
+    if (size==1) {
+        head=null;
+        tail=null;
         return;
     }
 
@@ -101,18 +114,14 @@ class node{
   
     if(index>(int)((size-1)/2)){
 
-         move=tail;
-
-         if (index==(size-1)){
+        if (index==(size-1)){
             tail=tail.prev;
             tail.next.prev=null;
             tail.next=null;
             return;
         }
- 
-        for(int i=size-1;i>index;i--){
-            move=move.prev;
-        }
+
+        move=find(index, false, size);
 
         move.prev.next=move.next;
         move.next.prev=move.prev;
@@ -124,18 +133,13 @@ class node{
 
     else{
 
-        move=head;
+        move=find(index, true, size);
 
         if (index==0){
             head=head.next;
             head.prev.next=null;
             head.prev=null;
             return;
-        }
-
-        for(int i=0;i<index;i++){
-            
-            move=move.next;
         }
 
         move.prev.next=move.next;
@@ -177,38 +181,84 @@ void deleteAtEnd(){
     tail=temp;
 
 }
-   
-}
 
 
 
-public class doublyLinkedList {
+private node find(int index , boolean isMoveHead , int size){
 
-    public static void main(String[] args) {
-    
-        List list = new List();
+    node move;
 
-       list.addAnElement(10);
-        list.addAnElement(15);
-        list.addAnElement(25);
-        list.addAnElement(20);
-    //    list.addAnElement(50);
-    //    list.addAtStart(100);
-    //    list.displayAllNumbers();
-    //    list.delete(1);
-    //    list.deleteAtEnd();
-    //    list.deleteAtStart();
-    //    System.out.println("Size : "+list.size());
-       
-    //    list.deleteAtStart();
-  
-    //    list .displayAllNumbers();
-       
-    //    System.out.println("Size : "+list.size());
+    if (isMoveHead) {
 
-    //    list.deleteAtEnd();
-       //list.addAnElement(-99);
-       list.displayAllNumbers();
+        move=head;
+
+        for(int i=0;i<index;i++){
+            
+            move=move.next;
+        }
+        return move;
+    }
+
+    move=tail;
+
+    for(int i=size-1;i>index;i--){
+        move=move.prev;
+    }
+
+    return move;
 
  }
+
+ void addDigitAtIndex(int index , int digit){
+
+    int size = size();
+
+    if(index<0 || index>=size || head==null || tail==null){
+        System.out.println("Error : Linked List Index Out of Bounds or List is empty");
+        return;
+    }
+
+    node move;
+
+    if(index>(int)((size-1)/2)){
+
+        move=find(index, false, size);
+        move.digit=digit;
+
+    }
+    else{
+        move=find(index, true, size);
+        move.digit=digit;
+    }
+
+ }
+
+ int getDigit(int index){
+
+    int size = size();
+
+    if(index<0 || index>=size || head==null || tail==null){
+        System.out.println("Error : Linked List Index Out of Bounds or List is empty");
+        return Integer.MIN_VALUE;
+    }
+
+    node move;
+
+    if(index>(int)((size-1)/2)){
+
+        move=find(index, false, size);
+        return move.digit;
+
+    }
+    
+        move=find(index, true, size);
+        return move.digit;
+
+ }
+
+ 
+   
 }
+ 
+
+
