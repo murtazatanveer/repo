@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Q2",
+      "request": "launch",
+      "mainClass": "Lab_Assignment_1.Q2",
+      "projectName": "repo_9d77d097"
+    },
+    {
+      "type": "java",
       "name": "linkedList",
       "request": "launch",
       "mainClass": "Linked_List.linkedList",
