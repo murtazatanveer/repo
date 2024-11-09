@@ -53,14 +53,13 @@ class node {
     
                 node move=head;
     
-                System.out.print("\nAll Digits are : ");
+              //  System.out.print("\nAll Digits are : ");
     
                 while (move!=null) {
-                    System.out.print(move.digit+" --> ");
+                    System.out.println(move.digit);
                     move=move.next;               
             }
-            System.out.print("NULL");
-            System.out.println("\n");
+           // System.out.println("\n");
         }
     
         public void addAtStart(int digit){
@@ -210,6 +209,17 @@ class node {
             return move.digit;
         }
 
+        public int getDigitFromStart(){
+
+            if (head==null) {
+                System.out.println("Error : Empty List");
+                return Integer.MAX_VALUE;
+                
+            }
+            return head.digit;
+
+        }
+
         private node findNode(int index){
 
             node move = head;
@@ -219,5 +229,7 @@ class node {
             }
             return move;
         }
+
+        
     
     }
