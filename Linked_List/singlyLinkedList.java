@@ -9,9 +9,6 @@ class node {
         next=null;
     }
     
-    public node(){
-        next=null;
-    }
         
     }
     
@@ -56,7 +53,7 @@ class node {
               //  System.out.print("\nAll Digits are : ");
     
                 while (move!=null) {
-                    System.out.println(move.digit);
+                    System.out.print(move.digit+" --> ");
                     move=move.next;               
             }
            // System.out.println("\n");

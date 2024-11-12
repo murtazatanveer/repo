@@ -3,12 +3,12 @@ import Linked_List.*;
 
 class stackArray{
 
-  private int []arr;
-  private int size;
-  private int top=-1;
+   int []arr;
+
+   int top=-1;
 
   stackArray(int size){
-    this.size=size;
+    
     arr=new int[size];
   }
 
@@ -49,7 +49,7 @@ class stackArray{
   }
 
   boolean isStackFull(){
-    return (top==(size-1));
+    return (top==(arr.length-1));
   }
 
   void displayStack(){
@@ -103,13 +103,17 @@ class stackLinkedList{
 public class stack {
   public static void main(String[] args) {
 
-    // stackArray stack = new stackArray(7);
+    // dynamicStackArray stack = new dynamicStackArray(1);
     // stack.push(10);
     // stack.push(20);
     // stack.push(30);
     // stack.push(40);
-    // stack.push(50);
-    
+    // stack.push(60);
+    // stack.push(70);
+
+    // stack.pop();
+    // stack.pop();
+
     // stack.displayStack();
 
   //   stackLinkedList stack2 = new stackLinkedList();

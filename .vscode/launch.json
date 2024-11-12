@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "queue",
+      "request": "launch",
+      "mainClass": "Queue.queue",
+      "projectName": "repo_36e069ca"
+    },
+    {
+      "type": "java",
       "name": "stack",
       "request": "launch",
       "mainClass": "Stack.stack",
