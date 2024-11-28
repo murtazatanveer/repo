@@ -15,64 +15,31 @@ class queueArray{
 
     void enQueue(int num){
 
-        setParameters();
-
-        if (isQueueFull()) {
-            System.out.println("Queue is Full");
-            return;
-        }
         
         
-    arr[end++]=num;
-
     }
 
     int deQueue(){
 
-        setParameters();
-
-        if (isEmpty()) {
-            System.out.println("Queue is Empty");
-            return Integer.MIN_VALUE;
-        }
-
-        int temp = arr[front];
-        arr[front++]=0;
-        return temp;
     }
 
     void displayQueue(){
-
-        if (isEmpty()) {
-            System.out.println("Queue is Empty");
-            return;
-        }
-       
-
-        System.out.print("\nQueue : ");
-
-        for (int i = front; i <= end-1; i++) {
-            System.out.print(arr[i]+" --> ");
-        }
-        System.out.print(" End\n\n");
+  
     }
 
     int size(){
-        return (end-front);
+        
     }
 
     boolean isEmpty(){      
-            return (end==0 || front==end);        
+                  
     }
 
     boolean isQueueFull(){
-        return (size()==arr.length);
+       
     }
 
-    private void setParameters(){
-        end= end==arr.length ? 0 : end;
-        front= front==arr.length ? 0 : front;
-    }
+    
 
 }
 
