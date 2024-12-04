@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "binarySearchTrees",
+      "request": "launch",
+      "mainClass": "Trees.binarySearchTrees",
+      "projectName": "Data-Structures-And-Alogorithms_53cb3765"
+    },
+    {
+      "type": "java",
       "name": "x",
       "request": "launch",
       "mainClass": "x",
