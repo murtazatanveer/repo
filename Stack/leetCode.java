@@ -194,5 +194,80 @@ private int size(ListNode head){
     return count;
 }
 
+/* Infix Notataion to PostFix Notation */
+
+public String infixToPostfix(String exp){
+
+    if (exp==null) {
+        System.out.println("Empty Expression");
+        return null;
+    }
+
+    String result = "";
+    Stack<Character> s = new Stack<>();
+
+    for (int i = 0; i < exp.length(); i++){
+
+        String num="";
+        
+        while (exp.charAt(i)>='0'&&exp.charAt(i)<='9'){
+            num+=(exp.charAt(i));
+            i++;
+            if (i>=exp.length()){break;}
+        }
+
+        result+=num;
+
+        if (i>=exp.length()){break;}
+        
+        if (exp.charAt(i)=='(' || exp.charAt(i)==')') {
+            if (exp.charAt(i)=='(') {
+                s.push('(');
+            }else{
+                while (s.peek()!='(') {
+                    result += s.pop(); 
+                }
+                s.pop();
+            }
+        }
+
+        else {
+            char precedence = precedence(exp.charAt(i));
+            
+            while (!s.isEmpty() && precedence <= precedence(s.peek()) && s.peek()!='(') {
+                result+=s.pop();
+            }
+            s.push(exp.charAt(i));
+        }
+
+    }
+
+    while (!s.isEmpty()) {
+        result+=s.pop();
+    }
+
+    return result;
+
+}
+
+private char precedence(char op){
+
+   if (op=='^') {
+    return 'c';
+   }
+   else if(op=='+' || op=='-'){
+    return 'a';
+   }
+    return 'b';   
+}
+
+
+
+public static void main(String[] args) {
+    leetCode ob = new leetCode();
+    
+    System.out.println(ob.infixToPostfix("(60+20*(50+20^(13*11))/30)"));
+
+}
 
 }

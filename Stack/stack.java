@@ -1,5 +1,5 @@
 package Stack;
-import Linked_List.*;
+
 
 class stackArray{
 
@@ -68,33 +68,81 @@ class stackArray{
 
 }
 
+
+
+
 class stackLinkedList{
 
-  private singlyLinkedList list;
+  class node{
+
+    int data;
+    node next;
+
+    node(int data){
+      this.data=data;
+    }
+
+    node(){
+      data=0;
+    }
+
+  }
+
+  node top;
 
   stackLinkedList(){
-    list=new singlyLinkedList();
+    top=null;
   }
 
   void push(int num){
 
-    list.addAtStart(num);
+  node newNode = new node(num);
+  newNode.next=top;
+  top=newNode;
 
   }
 
-  int peek(){
-    return list.getDigit(0);
+  node peek(){
+    return top;
   }
 
-  int pop(){
-    int temp=list.getDigit(0);
-    list.deleteFromStart();
+  node pop(){
+    
+    if (isEmpty()) {
+      System.out.println("Empty Stack");
+      return null;
+    }
+
+    node temp = top;
+    top=top.next;
+    temp.next=null;
     return temp;
+
+  }
+
+  boolean isEmpty(){
+    if (top==null) {
+      return true;
+    }
+    return false;
   }
 
   void displayStack(){
+
+    if (isEmpty()) {
+      System.out.println("Empty Stack");
+      return;
+    }
+
     System.out.println("_____TOP_____\n");
-    list.displayAllDigits();
+
+    node move = top;
+
+    while (move!=null) {
+      System.out.println("     "+move.data);
+      move=move.next;
+    }
+
     System.out.println("\n____Bottom___");
   }
 
@@ -116,18 +164,19 @@ public class stack {
 
     // stack.displayStack();
 
-  //   stackLinkedList stack2 = new stackLinkedList();
-  //   stack2.push(10);
-  //   stack2.push(20);
-  //   stack2.push(30);
-  //   stack2.push(40);
-  //   stack2.push(50);
-  //   stack2.push(60);
-  //   stack2.push(70);
+//     stackLinkedList stack2 = new stackLinkedList();
+//     stack2.push(10);
+//     stack2.push(20);
+//     stack2.push(30);
+//     stack2.push(40);
+//     stack2.push(50);
+//     stack2.push(60);
+//     stack2.push(70);
 
-  //  System.out.println( stack2.pop()+"\t"+stack2.pop());
-  //  System.out.println(stack2.peek());
+//   stack2.push(stack2.pop().data+stack2.pop().data+stack2.peek().data);
+//   System.out.println(stack2.peek());
+// stack2.push(stack2.pop().data+stack2.pop().data);
 
-  //  stack2.displayStack();
+//    stack2.displayStack();
   }
 }

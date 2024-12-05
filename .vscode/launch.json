@@ -6,6 +6,27 @@
   "configurations": [
     {
       "type": "java",
+      "name": "leetCode",
+      "request": "launch",
+      "mainClass": "Stack.leetCode",
+      "projectName": "Data-Structures-And-Alogorithms_53cb3765"
+    },
+    {
+      "type": "java",
+      "name": "Q2",
+      "request": "launch",
+      "mainClass": "Q2",
+      "projectName": "Data-Structures-And-Alogorithms_53cb3765"
+    },
+    {
+      "type": "java",
+      "name": "stack",
+      "request": "launch",
+      "mainClass": "Stack.stack",
+      "projectName": "Data-Structures-And-Alogorithms_53cb3765"
+    },
+    {
+      "type": "java",
       "name": "binarySearchTrees",
       "request": "launch",
       "mainClass": "Trees.binarySearchTrees",

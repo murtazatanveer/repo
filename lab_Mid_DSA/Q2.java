@@ -80,7 +80,8 @@ class postfix{
 
 public class Q2{
     public static void main(String[] args) {
-        postfix ob = new postfix(" 623+-382/+*2^3+");
+        postfix ob = new postfix("45+36*-32^+82/3*-57*+");
         System.out.println(ob.postfixResult());
+
     }
 }

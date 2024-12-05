@@ -143,6 +143,40 @@ public class binarySearchTrees {
        
     }
 
+    node maxNode(){
+
+        if (root==null) {
+            System.out.println("Empty Tree");
+            return null;
+        }
+
+        node temp = root;
+
+        while (temp.left!=null) {
+            temp=temp.left;
+        }
+
+        return temp;
+
+    }
+
+    node minNode(){
+
+        if (root==null) {
+            System.out.println("Empty Tree");
+            return null;
+        }
+
+        node temp = root;
+
+        while (temp.right!=null) {
+            temp=temp.right;
+        }
+
+        return temp;
+
+    }
+
 
     public static void main(String[] args) {
         
@@ -166,6 +200,9 @@ public class binarySearchTrees {
         tree.preorderTraversal();
         tree.postorderTraversal();
         tree.inorderTraversal();
+
+        System.out.println(tree.minNode().data);
+        System.out.println(tree.maxNode().data);
 
     }
 }
