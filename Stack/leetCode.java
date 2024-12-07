@@ -210,13 +210,16 @@ public String infixToPostfix(String exp){
 
         String num="";
         
-        while (exp.charAt(i)>='0'&&exp.charAt(i)<='9'){
+        boolean flag=false;
+
+        while ((exp.charAt(i)>='0'&&exp.charAt(i)<='9') || ((exp.charAt(i)>='a' && exp.charAt(i)<='z') || (exp.charAt(i)>='A'&&exp.charAt(i)<='Z'))){
+            flag=true;
             num+=(exp.charAt(i));
             i++;
             if (i>=exp.length()){break;}
         }
 
-        result+=num;
+        if(flag){result+=(" "+num+" ");}
 
         if (i>=exp.length()){break;}
         
@@ -248,7 +251,7 @@ public String infixToPostfix(String exp){
 
     return result;
 
-}
+}  
 
 private char precedence(char op){
 
@@ -266,7 +269,7 @@ private char precedence(char op){
 public static void main(String[] args) {
     leetCode ob = new leetCode();
     
-    System.out.println(ob.infixToPostfix("(60+20*(50+20^(13*11))/30)"));
+    System.out.println(ob.infixToPostfix("(x+20*(50+y^(13*z))/30)"));
 
 }
 
