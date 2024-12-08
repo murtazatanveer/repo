@@ -2,6 +2,8 @@
 
 import java.util.Stack;
 
+import org.w3c.dom.Node;
+
 class node{
 
     node left;
@@ -208,62 +210,86 @@ public class binarySearchTrees {
         }
         
         node temp = root;
+        node parent = temp;
 
-        while (temp!=null) {
-
-            node parent = temp;
+        while (true) {
 
             if (temp.data==data) {              
         
-                if (temp.right==null && temp.left==null) {
-                                    
-                    parent=temp;       
-                    temp=temp.right;
-                    
-                    while (temp.left!=null) {
-                        temp=temp.left;
+                if(temp.left==null && temp.right!=null){
+
+                    if (parent.right==temp) {
+                        parent.right=temp.right;
+                    }else{
+                        parent.left=temp.right;
                     }
-
-                    int t = parent.data;
-                    parent.data=temp.data;
-                    temp.data=t;
                     
-                    del(temp, parent);
-                }
+            }else if (temp.right==null && temp.left!=null) {
 
+
+                if (parent.right==temp) {
+                    parent.right=temp.left;
+                }else{
+                    parent.left=temp.left;
+                }
+                
             }
-            if (data>temp.data) {
+
+            else if(temp.left==null && temp.right==null){
+                if (parent==temp) {
+                    root=null;
+                }
+              else if (parent.left==temp) {
+                parent.left=null;
+              }else{
+                parent.right=null;
+              }  
+            }
+
+            else{
+
+                node sucessor = temp.right;
+
+                parent=sucessor;
+
+                while (sucessor.left!=null) {
+                    parent=sucessor;
+                    sucessor=sucessor.left;
+                }
+                temp.data=sucessor.data;
+            
+                if (sucessor.right==null) {
+                    if (sucessor==parent) {
+                        temp.right=null;
+                    }else{
+                        parent.left=null;
+                    }
+                    
+                }else{
+                    if (sucessor==parent) {
+                        temp.right=sucessor.right;
+                    }else{
+                        parent.left=sucessor.right;
+                    }
+                    
+                }
+               }
+               break;
+            }
+            else if (data>temp.data) {
                 parent=temp;
                 temp=temp.right;
-            }else if(data<temp.data){
+            }else{
                 parent=temp;
                 temp=temp.left;
             }
         }
+        return true;
     }
 
-    private void del(node temp , node parent){
-        
-        if(temp.left==null && temp.right!=null){
+   
 
-            if (parent.right==temp) {
-                temp=temp.right;
-                parent.right=temp;
-            }else{
-                temp=temp.right;
-                parent.left=temp;
-            }
-
-    }else if (temp.right==null && temp.left!=null) {
-        if (parent.right==temp) {
-            temp=temp.left;
-            parent.right=temp;
-        }else{
-            temp=temp.left;
-            parent.left=temp;
-        }
-    }
-    }
+    
 
     public static void main(String[] args) {
         
@@ -283,15 +309,19 @@ public class binarySearchTrees {
         tree.insert(90);
         tree.insert(80);
         tree.insert(87);
+
   
-        tree.preorderTraversal();
-        tree.postorderTraversal();
+        // tree.preorderTraversal();
+        // tree.postorderTraversal();
+        tree.inorderTraversal();
+        System.out.println("\n"+tree.delete(13));
+   
         tree.inorderTraversal();
 
-        System.out.println(tree.minNode().data);
-        System.out.println(tree.maxNode().data);
+        // System.out.println(tree.minNode().data);
+        // System.out.println(tree.maxNode().data);
 
-        System.out.println(tree.isExist(88));
+        // System.out.println(tree.isExist(88));
     }
 }
     
