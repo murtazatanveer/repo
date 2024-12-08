@@ -66,7 +66,7 @@ public class binarySearchTrees {
             System.out.print(temp.data+" --> ");
             temp=temp.right;
 
-        } while (!s.isEmpty());
+        } while (!s.isEmpty() || temp!=null);
 
         System.out.print("END");
 

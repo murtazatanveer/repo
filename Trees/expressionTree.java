@@ -138,7 +138,10 @@ private char precedence(char op){
     }
  }
 
- void preorderTraversal(){
+ /*  Convert expression tree into prefix notation. If we display our Expression tree in preorder traversal
+we get prefix Notation */
+
+public void preorderTraversal(){
 
     if (root==null) {
         System.out.println("Empty Tree");
@@ -170,11 +173,13 @@ private char precedence(char op){
 
     } while (!s.isEmpty());
 
-    System.out.print("END");
    
 }
 
-void postorderTraversal(){
+/*  Convert expression tree into postfix notation. If we display our Expression tree in postorder traversal
+we get postfix Notation */
+
+public void postorderTraversal(){
         
     if (root==null) {
         System.out.println("Empty Tree");
@@ -205,11 +210,13 @@ void postorderTraversal(){
 
     } while (!s.isEmpty());
 
-    System.out.print("END");
-   
+
 }
 
-void inorderTraversal(){
+/*  Convert expression tree into infix notation. If we display our Expression tree in inorder traversal
+we get Infix Notation */
+
+public void inorderTraversal(){
 
     if (root==null) {
         System.out.println("Empty Tree");
@@ -219,7 +226,7 @@ void inorderTraversal(){
     node temp = root;
     Stack<node> s = new Stack<>();
 
-    System.out.print("\nIn-Order Traversal : ");
+    System.out.print("\nIn-Order Traversal or Infix Notation : ");
 
 
     do {
@@ -233,18 +240,16 @@ void inorderTraversal(){
         System.out.print(temp.data+" ");
         temp=temp.right;
 
-    } while (!s.isEmpty());
-
-    System.out.print("END");
+    } while (!s.isEmpty() || temp!=null);
 
 }
 
 public static void main(String[] args) {
-    expressionTree tree = new expressionTree("a+b*c*d+e");
+    expressionTree tree = new expressionTree("((a+b)*(c*(d+e)))");
     tree.expressionTreeInsertion();
     tree.inorderTraversal();
-    tree.postorderTraversal();
-    tree.preorderTraversal();
+      tree.postorderTraversal();
+     tree.preorderTraversal();
 }
 
 }

@@ -270,6 +270,8 @@ public static void main(String[] args) {
     leetCode ob = new leetCode();
     
     System.out.println(ob.infixToPostfix("(x+20*(50+y^(13*z))/30)"));
+    System.out.println(ob.infixToPostfix("((a+b)*(c*(d+e)))"));
+
 
 }
 
