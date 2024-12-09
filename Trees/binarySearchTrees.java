@@ -1,8 +1,5 @@
  package Trees;
-
-import java.util.Stack;
-
-import org.w3c.dom.Node;
+import java.util.*;
 
 class node{
 
@@ -43,6 +40,37 @@ public class binarySearchTrees {
         }
     }
 
+
+    void levelOrderTraversal(){
+        
+        if (root==null) {
+            System.out.println("Empty Tree");
+            return;
+        }
+
+        Queue<node> q = new LinkedList<>();
+        node temp = root;
+
+        q.add(temp);
+
+        while (!q.isEmpty()) {
+
+            temp=q.remove();
+            System.out.print(temp.data+" --> ");
+
+            if (temp.left!=null) {
+                q.add(temp.left);
+            }
+            if (temp.right!=null) {
+                q.add(temp.right);
+            }
+                        
+        }
+
+        System.out.print("END\n");
+        
+
+    }
 
     void inorderTraversal(){
 
@@ -310,13 +338,13 @@ public class binarySearchTrees {
         tree.insert(80);
         tree.insert(87);
 
-  
-        // tree.preorderTraversal();
+         tree.levelOrderTraversal();
+        // // tree.preorderTraversal();
         // tree.postorderTraversal();
-        tree.inorderTraversal();
-        System.out.println("\n"+tree.delete(13));
+        // tree.inorderTraversal();
+        // System.out.println("\n"+tree.delete(13));
    
-        tree.inorderTraversal();
+        // tree.inorderTraversal();
 
         // System.out.println(tree.minNode().data);
         // System.out.println(tree.maxNode().data);
