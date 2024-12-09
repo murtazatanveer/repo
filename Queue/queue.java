@@ -1,104 +1,104 @@
 package Queue;
-import Linked_List.*;
-
-class queueArray{
-
-    int end;
-    int front;
-    int []arr;
-
-    queueArray(int size){
-        arr=new int[size];
-        front=0;
-        end=0;
-    }
-
-    void enQueue(int num){
-
-        
-        
-    }
-
-    int deQueue(){
-
-    }
-
-    void displayQueue(){
-  
-    }
-
-    int size(){
-        
-    }
-
-    boolean isEmpty(){      
-                  
-    }
-
-    boolean isQueueFull(){
-       
-    }
-
-    
-
-}
 
 class queueLinkedList{
 
-    singlyLinkedList list;
+    private node front;
+    private node rear;
 
+     class node  {
+
+        int data;
+        node next;
+
+        node(int data){
+            this.data=data;
+        }
+
+    }
 
     queueLinkedList(){
-        list=new singlyLinkedList();
+        front=null;
+        rear=null;
     }
     
     void enQueue(int num){
-        list.addAnElement(num);
+
+        node newNum = new node(num);
+
+        if (front==null && rear==null) {
+            front=newNum;
+            rear=newNum;
+            return;
+        }
+
+        rear.next=newNum;
+        rear=rear.next;
+
     }
 
     int deQueue(){
         
-        int temp=list.getDigitFromStart();
-        list.deleteFromStart();
-        return temp;
+        if (isEmpty()) {
+            System.out.println("Empty Queue");
+            return Integer.MIN_VALUE;
+        }
         
+        node temp;
+
+        if (front==rear) {
+            temp=front;
+            front=null;
+            rear=null;
+            return temp.data;
+        }
+        
+        temp=front;
+        front=front.next;
+        return temp.data;
+
+    }
+
+    boolean isEmpty(){
+        return front==null && rear==null ? true : false; 
     }
 
     void displayQueue(){
 
-        System.out.print("\nFront ");
-        list.displayAllDigits();
-        System.out.println(" Rear\n\n");
+        if (isEmpty()) {
+            System.out.println("Empty Queue");
+            return;
+        }
+
+        node temp=front;
+
+        System.out.print("Queue : ");
+        while (temp!=null) {
+            System.out.print(temp.data+" --> ");
+            temp=temp.next;
+        }
+
+        System.out.print("END\n"); 
     }
 
 }
+
+
 
 public class queue {
     public static void main(String[] args) {
         
-        // queueArray que = new queueArray(5);
+       queueLinkedList queue = new queueLinkedList();
+       queue.enQueue(10);
+       queue.enQueue(20);
+       queue.enQueue(30);
+       queue.enQueue(40);
+       queue.enQueue(50);
+       queue.displayQueue();
+       queue.deQueue();
+       queue.deQueue();
 
-        // que.enQueue(10);
-        // que.enQueue(20);
-        // que.enQueue(30);
-        // que.enQueue(40);
-        // que.enQueue(50);
-        
-        // que.deQueue();
-        // que.deQueue();
-        // // que.deQueue();
-        // // que.deQueue();
-        // // que.deQueue();
+       queue.displayQueue();
 
-       
-        
-        //  que.enQueue(66);
-        //  que.enQueue(76);
-        //  que.enQueue(86);
-
-
-        // que.displayQueue();
-        
 
     }
 }
