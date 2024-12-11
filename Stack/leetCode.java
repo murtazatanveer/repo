@@ -264,14 +264,63 @@ private char precedence(char op){
     return 'b';   
 }
 
+/* 32. Longest Valid Parentheses
+Hard
+Topics
+Companies
+Given a string containing just the characters '(' and ')', return the length of the longest valid (well-formed) parentheses 
+substring
+.
+
+ 
+
+Example 1:
+
+Input: s = "(()"
+Output: 2
+Explanation: The longest valid parentheses substring is "()".
+Example 2:
+
+Input: s = ")()())"
+Output: 4
+Explanation: The longest valid parentheses substring is "()()".
+Example 3:
+
+Input: s = ""
+Output: 0
+ 
+
+Constraints:
+
+0 <= s.length <= 3 * 104
+s[i] is '(', or ')'. */
+
+ int longestValidParentheses(String s) {
+
+    if (s.isEmpty() || s==null) {
+        return 0;
+    }
+
+    Stack<Character> stack = new Stack<Character>();
+    stack.push(s.charAt(0));
+    int len = 0;
+    for (int i = 1; i < s.length(); i++) {
+        if (s.charAt(i)==')' && !stack.isEmpty() && stack.peek()=='(' ){
+            stack.pop();
+            len+=2;
+        }else{
+            stack.push(s.charAt(i));
+        }
+    }
+    return len;
+}
+
 
 
 public static void main(String[] args) {
     leetCode ob = new leetCode();
     
-    System.out.println(ob.infixToPostfix("(x+20*(50+y^(13*z))/30)"));
-    System.out.println(ob.infixToPostfix("A^B*C-D+E/F"));
-
+    System.out.println(ob.longestValidParentheses("())"));
 
 }
 

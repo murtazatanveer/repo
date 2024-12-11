@@ -12,6 +12,7 @@ class node{
     }
  }
 
+
 public class binarySearchTrees {
 
     node root;
@@ -41,7 +42,7 @@ public class binarySearchTrees {
     }
 
 
-    void levelOrderTraversal(){
+    void levelOrderTraversal(node root){
         
         if (root==null) {
             System.out.println("Empty Tree");
@@ -54,17 +55,15 @@ public class binarySearchTrees {
         q.add(temp);
 
         while (!q.isEmpty()) {
-
             temp=q.remove();
             System.out.print(temp.data+" --> ");
-
-            if (temp.left!=null) {
-                q.add(temp.left);
-            }
             if (temp.right!=null) {
                 q.add(temp.right);
             }
-                        
+            if (temp.left!=null) {
+                q.add(temp.left);
+            }
+
         }
 
         System.out.print("END\n");
@@ -315,30 +314,62 @@ public class binarySearchTrees {
         return true;
     }
 
-   
-
     
+
+     node HeapTree(ArrayList<node> list){
+
+        Stack <node>s1 = new Stack<>();
+        Stack <node>s2 = new Stack<>();
+
+        int size = list.size();
+
+        for (int i = (size/2)-1; i >=0 ; i--) {
+            s1.push(list.get(i));
+        }
+
+        for (int i = size-1; i > 0; i--) {
+            s2.push(list.get(i));
+        }
+        node root = s1.pop();
+        node temp = root;
+
+        for (int i = 0; i < size/2 ; i++) {
+            if (i==(size/2)-1 && size%2==0) {
+                temp.right=s2.pop();
+                break;
+            }
+                temp.right=s2.pop();
+                temp.left=s2.pop();
+
+                if (i!=(size/2)-1) {
+                    temp=s1.pop(); 
+                }
+                
+                           
+        }
+        return root;
+     }
 
     public static void main(String[] args) {
         
-        binarySearchTrees tree = new binarySearchTrees();
+        //binarySearchTrees tree = new binarySearchTrees();
 
-        tree.insert(75);
-        tree.insert(13);
-        tree.insert(29);
-        tree.insert(50);
-        tree.insert(95);
-        tree.insert(78);
-        tree.insert(43);
-        tree.insert(10);
-        tree.insert(63);
-        tree.insert(26);
-        tree.insert(85);
-        tree.insert(90);
-        tree.insert(80);
-        tree.insert(87);
+        // tree.insert(75);
+        // tree.insert(13);
+        // tree.insert(29);
+        // tree.insert(50);
+        // tree.insert(95);
+        // tree.insert(78);
+        // tree.insert(43);
+        // tree.insert(10);
+        // tree.insert(63);
+        // tree.insert(26);
+        // tree.insert(85);
+        // tree.insert(90);
+        // tree.insert(80);
+        // tree.insert(87);
 
-         tree.levelOrderTraversal();
+        //  tree.levelOrderTraversal(tree.node);
         // // tree.preorderTraversal();
         // tree.postorderTraversal();
         // tree.inorderTraversal();
@@ -350,6 +381,20 @@ public class binarySearchTrees {
         // System.out.println(tree.maxNode().data);
 
         // System.out.println(tree.isExist(88));
+
+        // ArrayList<node> list = new ArrayList<>();
+        // list.add(new node(10));
+        // list.add(new node(20));
+        // list.add(new node(30));
+        // list.add(new node(40));
+        // list.add(new node(50));
+        // list.add(new node(60));
+        // list.add(new node(70));
+
+        // node root = tree.HeapTree(list);
+
+        // tree.levelOrderTraversal(root);
+
     }
 }
     
