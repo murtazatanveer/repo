@@ -68,6 +68,9 @@ public class heap {
 
             if (list.get(i).data==data) {
 
+                
+                boolean flag = list.get(i).data==list.get(size-1).data;
+
                 list.get(i).data=list.get(size-1).data;
                 if (list.get((size-1)/2).right==list.get(size-1)) {
                     list.get((size-1)/2).right=null;
@@ -76,12 +79,73 @@ public class heap {
                 }
                 list.remove(size-1);
 
-                if (list.get(i/2)!=null && list.get(i/2).data) {
+                if (flag) {
+                    return true;
+                }
+
+                if (list.get(i/2)!=null && list.get(i).data<list.get(i/2).data){
+
+                    int index = i;
+                    node newNode = list.get(i);
+
+                    while (list.get(index/2)!=null && (newNode.data<list.get(index/2).data)) {
+
+                        int temp = list.get(index/2).data;
+                        list.get(index/2).data=newNode.data;
+                        newNode.data=temp;
+
+                        index=index/2;
+                        newNode=list.get(index);
+                    }
                     
                 }
+                else if (list.get(i).right!=null || list.get(i).left!=null){
+
+                    boolean right = list.get(i).right!=null;
+                    boolean left = list.get(i).left!=null;
+                    node n = list.get(i);
+                    int index = i;
+
+                    do{
+                        if (left&&right) {
+                            
+                            if (list.get(index*2).data>list.get((index*2)+1).data) {
+                                int temp=n.data;
+                                n.data=list.get((index*2)+1).data;
+                                list.get((index*2)+1).data=temp;
+                                index=(index*2)+1;
+                                n=list.get(index);
+                                 right = list.get(index).right!=null;
+                                 left = list.get(index).left!=null;
+                            }else if (list.get(index*2).data<list.get((index*2)+1).data) {
+                                int temp=n.data;
+                                n.data=list.get((index*2)).data;
+                                list.get((index*2)).data=temp;
+                                index=index*2;
+                                n=list.get(index);
+                                right = list.get(index).right!=null;
+                                 left = list.get(index).left!=null;
+                            }
+
+                        }else if (left) {
+                            if (n.data>n.left.data) {
+                                int temp=n.data;
+                                n.data=n.left.data;
+                                n.left.data=temp;
+                                n=n.left;
+                                index=index*2;
+                                right = list.get(index).right!=null;
+                                 left = list.get(index).left!=null;
+                            }
+                        }
+                       
+                    }while(right&&left);
+                    
+                }
+                return true;
             }
         }
-
+        return false;
      }
 
      void levelOrderTraversal(){
@@ -166,10 +230,12 @@ public class heap {
         tree.insert(15);
         tree.insert(70);
 
+        tree.delete(65);
 
         tree.levelOrderTraversal();
 
-            
+        
+
 
      }
 
