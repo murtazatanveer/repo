@@ -4,7 +4,7 @@ import java.util.Stack;
 
 public class expressionTree {
     
-    String exp;
+    private String exp;
     node root;
 
 public expressionTree(String exp){

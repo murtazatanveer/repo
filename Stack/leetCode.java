@@ -295,32 +295,32 @@ Constraints:
 0 <= s.length <= 3 * 104
 s[i] is '(', or ')'. */
 
- int longestValidParentheses(String s) {
+//  int longestValidParentheses(String s) {
 
-    if (s.isEmpty() || s==null) {
-        return 0;
-    }
+//     if (s.isEmpty() || s==null) {
+//         return 0;
+//     }
 
-    Stack<Character> stack = new Stack<Character>();
-    stack.push(s.charAt(0));
-    int len = 0;
-    for (int i = 1; i < s.length(); i++) {
-        if (s.charAt(i)==')' && !stack.isEmpty() && stack.peek()=='(' ){
-            stack.pop();
-            len+=2;
-        }else{
-            stack.push(s.charAt(i));
-        }
-    }
-    return len;
-}
-
+//     Stack<Character> stack = new Stack<Character>();
+//     stack.push(s.charAt(0));
+//     int len = 0;
+//     for (int i = 1; i < s.length(); i++) {
+//         if (s.charAt(i)==')' && !stack.isEmpty() && stack.peek()=='(' ){
+//             stack.pop();
+//             len+=2;
+//         }else{
+//             stack.push(s.charAt(i));
+//         }
+//     }
+//     return len;
+// }
+// incomplete
 
 
 public static void main(String[] args) {
     leetCode ob = new leetCode();
     
-    System.out.println(ob.longestValidParentheses("())"));
+    //System.out.println(ob.longestValidParentheses("())"));
 
 }
 

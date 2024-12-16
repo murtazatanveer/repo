@@ -6,6 +6,27 @@
   "configurations": [
     {
       "type": "java",
+      "name": "heap",
+      "request": "launch",
+      "mainClass": "Trees.heap",
+      "projectName": "Data-Structures-And-Alogorithms_53cb3765"
+    },
+    {
+      "type": "java",
+      "name": "interfaces_2",
+      "request": "launch",
+      "mainClass": "interfaces_2",
+      "projectName": "Data-Structures-And-Alogorithms_53cb3765"
+    },
+    {
+      "type": "java",
+      "name": "abc",
+      "request": "launch",
+      "mainClass": "abc",
+      "projectName": "Data-Structures-And-Alogorithms_53cb3765"
+    },
+    {
+      "type": "java",
       "name": "queue",
       "request": "launch",
       "mainClass": "Queue.queue",

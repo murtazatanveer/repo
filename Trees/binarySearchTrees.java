@@ -42,7 +42,7 @@ public class binarySearchTrees {
     }
 
 
-    void levelOrderTraversal(node root){
+    void levelOrderTraversal(){
         
         if (root==null) {
             System.out.println("Empty Tree");
@@ -352,7 +352,7 @@ public class binarySearchTrees {
 
     public static void main(String[] args) {
         
-        //binarySearchTrees tree = new binarySearchTrees();
+       // binarySearchTrees tree = new binarySearchTrees();
 
         // tree.insert(75);
         // tree.insert(13);
@@ -369,7 +369,7 @@ public class binarySearchTrees {
         // tree.insert(80);
         // tree.insert(87);
 
-        //  tree.levelOrderTraversal(tree.node);
+         //tree.levelOrderTraversal();
         // // tree.preorderTraversal();
         // tree.postorderTraversal();
         // tree.inorderTraversal();
@@ -390,6 +390,8 @@ public class binarySearchTrees {
         // list.add(new node(50));
         // list.add(new node(60));
         // list.add(new node(70));
+        // list.add(new node(80));
+
 
         // node root = tree.HeapTree(list);
 
