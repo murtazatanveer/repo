@@ -230,7 +230,7 @@ public class heap {
         tree.insert(15);
         tree.insert(70);
 
-        tree.delete(65);
+        tree.delete(13);
 
         tree.levelOrderTraversal();
 

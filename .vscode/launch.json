@@ -6,6 +6,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "huffmanCoding",
+      "request": "launch",
+      "mainClass": "Assignment_No_2.huffmanCoding",
+      "projectName": "Data-Structures-And-Alogorithms_53cb3765"
+    },
+    {
+      "type": "java",
+      "name": "HuffmanCoding",
+      "request": "launch",
+      "mainClass": "HuffmanCoding",
+      "projectName": "Data-Structures-And-Alogorithms_53cb3765"
+    },
+    {
+      "type": "java",
       "name": "heap",
       "request": "launch",
       "mainClass": "Trees.heap",
