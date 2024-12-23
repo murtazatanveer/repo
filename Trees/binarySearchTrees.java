@@ -1,6 +1,8 @@
  package Trees;
 import java.util.*;
 
+import javax.swing.tree.TreeNode;
+
 class node{
 
     node left;
@@ -350,24 +352,40 @@ public class binarySearchTrees {
         return root;
      }
 
+     void inorderTraveralUsingRecursion(node root){
+
+       if (root==null) {
+        return;
+       }
+     
+       inorderTraveralUsingRecursion(root.left);
+       System.out.print(root.data+" ");
+       inorderTraveralUsingRecursion(root.right);
+
+     }
+
+
+
     public static void main(String[] args) {
         
-       // binarySearchTrees tree = new binarySearchTrees();
+       binarySearchTrees tree = new binarySearchTrees();
 
-        // tree.insert(75);
-        // tree.insert(13);
-        // tree.insert(29);
-        // tree.insert(50);
-        // tree.insert(95);
-        // tree.insert(78);
-        // tree.insert(43);
-        // tree.insert(10);
-        // tree.insert(63);
-        // tree.insert(26);
-        // tree.insert(85);
-        // tree.insert(90);
-        // tree.insert(80);
-        // tree.insert(87);
+        tree.insert(75);
+        tree.insert(13);
+        tree.insert(29);
+        tree.insert(50);
+        tree.insert(95);
+        tree.insert(78);
+        tree.insert(43);
+        tree.insert(10);
+        tree.insert(63);
+        tree.insert(26);
+        tree.insert(85);
+        tree.insert(90);
+        tree.insert(80);
+        tree.insert(87);
+
+      // tree.inorderTraveralUsingRecursion(tree.root);
 
          //tree.levelOrderTraversal();
         // // tree.preorderTraversal();
