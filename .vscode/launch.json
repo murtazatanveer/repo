@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "priorityQueue",
+      "request": "launch",
+      "mainClass": "Queue.priorityQueue",
+      "projectName": "Data-Structures-And-Alogorithms_53cb3765"
+    },
+    {
+      "type": "java",
       "name": "huffmanCoding",
       "request": "launch",
       "mainClass": "Assignment_No_2.huffmanCoding",
